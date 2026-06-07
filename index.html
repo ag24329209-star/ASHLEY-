@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ash — Todo lo que quiero que sepas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f5ede0;
+  --warm: #e8d5b7;
+  --parchment: #f2e4c8;
+  --brown: #8b5e3c;
+  --dark: #100b09;
+  --dark2: #160e0b;
+  --sepia-dark: #1e1208;
+  --sepia: #5c3d2e;
+  --gold: #c9a96e;
+  --gold-light: #dfc08a;
+  --rust: #8b3a1e;
+  --text: #2d1f14;
+  --text-light: rgba(245,237,224,0.75);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--rust));
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 1.4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(16,11,9,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,169,110,0.1);
+}
+
+.nav-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(245,237,224,0.5);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+@media (max-width: 650px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAMgAcIDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAABQIDBAYHAQAI/8QAPxAAAQMDAwMDAgMHAwQCAgINAQIDEQAEIQUSMQZBURMiYRRxMoGRBxUjQqGxwVLR8BYz4fEkYkNyFyU0g5L/xAAaAQADAQEBAQAAAAAAAAAAAAABAgMABAUG/8QALREAAgICAgEEAgICAgIDAAAAAAECEQMhEjFBBBMiUTJhFHFCUiOBBZEVYrH/2gAMAwEAAhEDEQA/AMSCjilpJMeKQpIz2rgkHNKc7pkkJCk4zUzTbtdncJKSUkGoLKsEdqlNtb5NBkpLwzZemeoEXdshKle6PNWl1KLljsawbStQesrgBJEf2rVdC1v6phAJye9SutMMJ18WA+rNELSS+zg8yPNOdJasVpS24rIxk1bb+2Te2i0GDiswb9XR9dW1BCSZEVOUadoWS4u0bOwsONA4pRgUG0a/9VhP2oqqVA1WLtWdMXyRCvrv0AVTiqxe9VNWy4Ur+sUb1O2ceZUADxWW9RaZcNrKoVAyfFTk3dEckmugte9XeoJbXHjtNI0/rPa/sdVKe81RVBxCjJM0haVpBUDPzR9pfZNNml6rpNn1C2l5lQCzmRVYX09qmmPFTDqonsaF6Z1Bd6asbFe0fymrfYdb210dl00EmOTW4yRqZK6d6gvGXwzdFW4HM1pdldi4ZCpzFUVg6der章);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+}
+</style>
+</head>
+<body>
+
+  <!-- Barra de progreso superior -->
+  <div class="progress-bar"></div>
+
+  <!-- Navegación fija -->
+  <nav>
+    <div class="nav-logo">Para Ash</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#mensaje">Mensaje</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sección Hero / Inicio -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg"></div>
+    <div style="text-align: center; z-index: 10; padding: 0 2rem;">
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; letter-spacing: 0.05em; color: var(--gold-light); margin-bottom: 1rem;">
+        Todo lo que quiero que sepas
+      </h1>
+      <p style="font-family: 'Dancing Script', cursive; font-size: 1.8rem; color: var(--cream); opacity: 0.8;">
+        Con mucho cariño...
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección Mensaje -->
+  <section id="mensaje" style="padding: 5rem 2rem; max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); margin-bottom: 2rem;">
+      Un pequeño espacio para ti
+    </h2>
+    <p style="font-size: 1.4rem; line-height: 1.8; color: var(--cream); font-family: 'Cormorant Garamond', serif;">
+      Aquí puedes continuar escribiendo todo el texto que le quieras dedicar, añadir poemas, canciones o los detalles que te gusten. El código base ya está listo y estructurado de forma limpia para que se vea genial en cualquier pantalla.
+    </p>
+  </section>
+
+</body>
+</html>
